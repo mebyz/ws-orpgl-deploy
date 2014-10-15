@@ -3,7 +3,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 echo "Pre-install nginx php mysql"
 
-apt-get install python-software-properties
+apt-get install -y python-software-properties
 sudo add-apt-repository ppa:ondrej/php5-oldstable
 apt-get update
 apt-get install -y php5-fpm php5-cli nginx mysql-server php5-mysql curl php5-memcached php5-curl
