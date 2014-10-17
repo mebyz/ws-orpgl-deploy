@@ -20,6 +20,7 @@ set :composer_install_flags, ''
         sudo "echo \"Fetches and installs release folder for this app\""
         sudo "rm -f /var/www/release && cdir=$(ls -td /var/www/ws-orpgl/releases/* | head -n1) && sudo ln -s $cdir /var/www/release"
         sudo "chmod -R 777 /var/www/release/web"
+	sudo "cp /vagrant/app_dev.php.sav /var/www/release/web/app_dev.php"
     end
   end
 
@@ -30,6 +31,13 @@ set :composer_install_flags, ''
   end
  end
 
+ task :release_webserver do                                                                                 
+   on roles :all do                                                                                        
+       sudo "echo \"Install nginx configuration file:\""                                                   
+       sudo "cp /vagrant/default.sav /etc/nginx/sites-enabled/default"                                     
+   end                                                                                                     
+ end                                                                                                       
+                                                                                                           
  task :release_reload do
     on roles :all do
         sudo "echo \"Restarts webserver+fpm\""
@@ -41,4 +49,5 @@ set :composer_install_flags, ''
 after 'deploy:updated', 'composer:install'
 after 'deploy:updated', 'release_installation'
 after 'deploy:updated', 'release_fpm'
+after 'deploy:updated', 'release_webserver'
 after 'deploy:updated', 'release_reload'
