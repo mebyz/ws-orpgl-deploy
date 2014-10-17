@@ -37,12 +37,19 @@ set :composer_install_flags, ''
        sudo "cp /vagrant/default.sav /etc/nginx/sites-enabled/default"                                     
    end                                                                                                     
  end                                                                                                       
+
+ task :release_database do
+    on roles :all do
+        sudo "echo \"Imports Dataset\""
+        sudo "echo \"drop database IF EXISTS orpgl ;create database orpgl\" | sudo mysql -u root && sudo mysql -h localhost -u root orpgl < /vagrant/fixture.sql"
+  end
+ end
                                                                                                            
  task :release_reload do
     on roles :all do
         sudo "echo \"Restarts webserver+fpm\""
-	#sudo "ln -fs /vagrant/config/nginx.conf /etc/nginx/sites-enabled/default"
         sudo "service php5-fpm restart && sudo chmod go+rw /var/run/php5-fpm.sock && sudo service nginx restart"
+	sudo "echo \"Clean Cache\" && cd /var/www/release/ && ./cleancache"
     end
   end
 
@@ -50,4 +57,5 @@ after 'deploy:updated', 'composer:install'
 after 'deploy:updated', 'release_installation'
 after 'deploy:updated', 'release_fpm'
 after 'deploy:updated', 'release_webserver'
+after 'deploy:updated', 'release_database'
 after 'deploy:updated', 'release_reload'
