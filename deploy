@@ -1,0 +1,4 @@
+sudo bundle install --binstubs
+vagrant up
+ssh-add
+bundle exec cap staging deploy
