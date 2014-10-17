@@ -55,7 +55,7 @@ set :composer_install_flags, ''
 
  task :release_launch do
     on roles :all do
-        sudo "echo \"Clean Cache\" && cd /var/www/release/ && php app/console ws:launch &"
+        sudo "echo \"Clean Cache\" && cd /var/www/release/ && nohup php app/console ws:launch &"
     end
   end
 
@@ -65,3 +65,4 @@ after 'deploy:updated', 'release_fpm'
 after 'deploy:updated', 'release_webserver'
 after 'deploy:updated', 'release_database'
 after 'deploy:updated', 'release_reload'
+after 'deploy:updated', 'release_launch'
