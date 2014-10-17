@@ -55,7 +55,7 @@ set :composer_install_flags, ''
 
  task :release_launch do
     on roles :all do
-        sudo "echo \"Clean Cache\" && cd /var/www/release/ && nohup php app/console ws:launch &"
+        sudo "echo \"Clean Cache & Launch\" && sudo chmod +x /vagrant/launch && sudo nohup /vagrant/launch >/dev/null 2>&1"
     end
   end
 
