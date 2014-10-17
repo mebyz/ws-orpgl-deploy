@@ -41,8 +41,8 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `username`, `salt`, `password`, `email`)
 VALUES
-	(1,'manu','064b94d727cb4a5852947bc0ea0349f7','zHQFlOyOmD6iujpo+KCtdEaiPBDORjCfcOyxxBJgKq5H+vcgvCbIZwbX4EOMQEx5r9HMZgd4GMDvOdulNulwew==','emmanuel.botros@gmail.com'),
-	(2,'manu2','8e5a775b9e7694fe85adf100f297f596','Xpc4XpaNkUD1Axo+ix4kDu8WM3Xq/4lrr+Y+Kh4SaeUMsOMR315dIWUvu8ICqYRmys9Y6PIeKnLrZub77Yz+QA==','emmanuel2.botros@gmail.com');
+	(1,'manu','064b94d727cb4a5852947bc0ea0349f7','R6HnR6c376zBlv2HFZPvElL2qLjgNYHyhCicYJSAx/gP2FaOItlD+16oMzSy+hPNks7cdj3DXbSHbsMSI2uKZA==','emmanuel.botros@gmail.com'),
+	(2,'manu2','8e5a775b9e7694fe85adf100f297f596','Etu16o0P5Iulo8pznH9Dx0g8PYYHK9x7fiDOfXqfRkCyWauCtEVFPflgdzrL/ZkBoDQbpKkKcobN/a1dIVD2Hw==','emmanuel2.botros@gmail.com');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
