@@ -20,7 +20,7 @@ Installation and usage:
 ======================
 - git clone https://github.com/mebyz/ws-orpgl-deploy.git
 - cd ws-orpgl-deploy
-- bundle install --binstubs
+- [sudo] bundle install --binstubs
 - vagrant up
 - bundle exec cap staging deploy
 
