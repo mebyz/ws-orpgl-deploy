@@ -3,7 +3,7 @@ ws-orpgl-deploy
 
 Goal: 
 ====
--ws-orpgl project deployment automation.
+-ws-orpgl project deployment automation 
 -(Ws-orpgl is a Sf2 / angularjs / websocket based webgl project)
 
 What you will get: 
