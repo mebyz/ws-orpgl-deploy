@@ -12,16 +12,16 @@ What you will get:
 
 Prerequisites:
 =============
-- Ruby (tip : install chruby, ruby-install and pick the according version)
+- Ruby
 - bundle
 - Vagrant (tip 2 : use virtualbox as a provider)
 
 Installation and usage:
 ======================
-- git clone https://github.com/mebyz/ws-orpgl-deploy
-- cd 
+- git clone https://github.com/mebyz/ws-orpgl-deploy.git
+- cd ws-orpgl-deploy
 - bundle install --binstubs
 - vagrant up
 - bundle exec cap staging deploy
 
-=> open http://localhost:8080 in a (webgl compatible) web browser
+=> open http://localhost:8080/app_dev.php/login_check in a (webgl compatible) web browser
