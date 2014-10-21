@@ -3,18 +3,18 @@ ws-orpgl-deploy
 
 Goal: 
 ====
--ws-orpgl project deployment automation 
--(Ws-orpgl is a Sf2 / angularjs / websocket based webgl project)
+- ws-orpgl project deployment automation 
+- (Ws-orpgl is a Sf2 / angularjs / websocket based webgl project)
 
 What you will get: 
 ================
--This will setup precise64 with git, nginx, php, mysql, bower, grunt, node, curl, composer
+- This will setup precise64 with git, nginx, php, mysql, bower, grunt, node, curl, composer
 
 Prerequisites:
 =============
--Ruby (tip : install chruby, ruby-install and pick the according version)
--bundle
--Vagrant (tip 2 : use virtualbox as a provider)
+- Ruby (tip : install chruby, ruby-install and pick the according version)
+- bundle
+- Vagrant (tip 2 : use virtualbox as a provider)
 
 Installation and usage:
 ======================
