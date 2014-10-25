@@ -10,15 +10,15 @@ apt-get update
 apt-get install -y php5-fpm php5-cli nginx mysql-server php5-mysql curl php5-memcached php5-curl php5-memcache memcached
 
 echo "Pre-install Node, Bower, Grunt"
-test -x /usr/local/bin/node || {
   cd /usr/local/src
-  wget --quiet http://nodejs.org/dist/v0.10.28/node-v0.10.28-linux-x64.tar.gz
-  tar -zxvf node-v0.10.28-linux-x64.tar.gz
+  sudo wget --quiet http://nodejs.org/dist/v0.10.28/node-v0.10.28-linux-x64.tar.gz
+  sudo tar -zxvf node-v0.10.28-linux-x64.tar.gz
   cd /usr/local/bin
-  ln -s /usr/local/src/node-v0.10.28-linux-x64/bin/node
-  ln -s /usr/local/src/node-v0.10.28-linux-x64/bin/npm
-  npm install -g bower grunt-cli grunt uglify-js uglifycss
-} &>/dev/null
+  sudo rm -f node
+  sudo rm -f npm
+  sudo ln -s /usr/local/src/node-v0.10.28-linux-x64/bin/node
+  sudo ln -s /usr/local/src/node-v0.10.28-linux-x64/bin/npm
+  sudo npm install -g bower grunt-cli grunt uglify-js uglifycss &>/dev/null
 
 echo "Pre-install git"
 apt-get install -y git &>/dev/null
