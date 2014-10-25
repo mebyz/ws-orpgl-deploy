@@ -7,6 +7,7 @@ server {
 location / {
         # try to serve file directly, fallback to app.php
         try_files $uri /app.php$is_args$args;
+	sendfile       off;
     }
 
     location ~ ^/(app|app_dev|config)\.php(/|$) {
@@ -15,6 +16,7 @@ location / {
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param HTTPS off;
+	sendfile       off;
     }
 
 }
