@@ -63,6 +63,12 @@ set :composer_install_flags, ''
   end
 
 
+task :release_gitconfig do
+    on roles :all do
+	sudo "echo \"git ignore chmod\" && cd /var/www/dev/source && git config core.fileMode false"
+    end
+end
+
 #after 'deploy:updated', 'grunt'
 after 'deploy:updated', 'composer:install'
 after 'deploy:updated', 'grunt'
@@ -72,3 +78,4 @@ after 'deploy:updated', 'release_webserver'
 after 'deploy:updated', 'release_database'
 after 'deploy:updated', 'release_reload'
 after 'deploy:updated', 'release_launch'
+after 'deploy:updated', 'release_gitconfig'
