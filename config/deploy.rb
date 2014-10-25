@@ -17,7 +17,7 @@ set :composer_install_flags, ''
 
   task :release_installation do
     on roles :all do
-        sudo "echo \"Fetches and installs release folder for this app\""
+        sudo "sudo rm -rf /var/www/dev/source && echo \"Fetches and installs release folder for this app\""
 #       sudo "echo ".." && cdir=$(ls -td /var/www/ws-orpgl/releases/* | head -n1) && sudo rm -rf /var/www/release && sudo mkdir /var/www/release && sudo cp -r $cdir/* /var/www/release/"
 	sudo "echo \"..\" && cdir=$(ls -td /var/www/ws-orpgl/releases/* | head -n1) && sudo rm -rf /var/www/release && sudo cp -rpH $cdir /var/www/release/"
 #	sudo "mkdir /var/www/release"
@@ -57,12 +57,15 @@ set :composer_install_flags, ''
 
  task :release_launch do
     on roles :all do
-	sudo "rm -rf /var/www/dev/source && sudo cp -rpH /var/www/release/ /var/www/dev/source/"
+	sudo "rm -rf /var/www/dev/source && sudo cp -fr /var/www/release/ /var/www/dev/source/ 2>/dev/null || :"
         sudo "echo \"Clean Cache & Launch\" && sudo chmod +x /vagrant/launch && sudo nohup /vagrant/launch >/dev/null 2>&1"
     end
   end
 
+
+#after 'deploy:updated', 'grunt'
 after 'deploy:updated', 'composer:install'
+after 'deploy:updated', 'grunt'
 after 'deploy:updated', 'release_installation'
 after 'deploy:updated', 'release_fpm'
 after 'deploy:updated', 'release_webserver'
