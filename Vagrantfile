@@ -52,4 +52,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.forward_agent = true
  
   config.vm.provision :shell, inline: $preseed 
+  config.vm.synced_folder "dev", "/var/www/dev",  :mount_options => ["dmode=777,fmode=777"]
 end

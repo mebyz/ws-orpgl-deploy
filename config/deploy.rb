@@ -6,7 +6,7 @@ set :branch, 'master'
 set :use_sudo, false
 set :deploy_to, "/var/www/#{fetch(:application)}"
 set :ssh_options, { :forward_agent => true }
-set :scm, :git
+#set :scm, :git
 set :format, :pretty
 set :log_level, :debug
 set :pty, true
@@ -18,7 +18,9 @@ set :composer_install_flags, ''
   task :release_installation do
     on roles :all do
         sudo "echo \"Fetches and installs release folder for this app\""
-        sudo "rm -f /var/www/release && cdir=$(ls -td /var/www/ws-orpgl/releases/* | head -n1) && sudo ln -s $cdir /var/www/release"
+#       sudo "echo ".." && cdir=$(ls -td /var/www/ws-orpgl/releases/* | head -n1) && sudo rm -rf /var/www/release && sudo mkdir /var/www/release && sudo cp -r $cdir/* /var/www/release/"
+	sudo "echo \"..\" && cdir=$(ls -td /var/www/ws-orpgl/releases/* | head -n1) && sudo rm -rf /var/www/release && sudo cp -rpH $cdir /var/www/release/"
+#	sudo "mkdir /var/www/release"
         sudo "chmod -R 777 /var/www/release/web"
 	sudo "cp /vagrant/app_dev.php.sav /var/www/release/web/app_dev.php"
     end
@@ -55,6 +57,7 @@ set :composer_install_flags, ''
 
  task :release_launch do
     on roles :all do
+	sudo "rm -rf /var/www/dev/source && sudo cp -rpH /var/www/release/ /var/www/dev/source/"
         sudo "echo \"Clean Cache & Launch\" && sudo chmod +x /vagrant/launch && sudo nohup /vagrant/launch >/dev/null 2>&1"
     end
   end

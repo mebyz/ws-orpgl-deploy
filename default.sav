@@ -1,5 +1,5 @@
 server {
-	root /var/www/release/web;
+	root /var/www/dev/source/web;
 	index index.html index.htm;
 
 	server_name localhost;
