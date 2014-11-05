@@ -55,10 +55,15 @@ set :composer_install_flags, ''
     end
   end
 
- task :release_launch do
+ task :release_cp do
     on roles :all do
 	sudo "rm -rf /var/www/dev/source && sudo cp -frpH /var/www/release/ /var/www/dev/source/ 2>/dev/null || :"
-        sudo "echo \"Clean Cache & Launch\" && sudo chmod +x /vagrant/launch && sudo nohup /vagrant/launch >/dev/null 2>&1"
+   end
+  end
+
+ task :release_launch do
+    on roles :all do  
+      sudo "echo \"Launch\" && sudo chmod +x /vagrant/launch && sudo nohup /vagrant/launch >/dev/null 2>&1"
     end
   end
 
@@ -77,5 +82,6 @@ after 'deploy:updated', 'release_fpm'
 after 'deploy:updated', 'release_webserver'
 after 'deploy:updated', 'release_database'
 after 'deploy:updated', 'release_reload'
+after 'deploy:updated', 'release_cp'
 after 'deploy:updated', 'release_launch'
 after 'deploy:updated', 'release_gitconfig'
