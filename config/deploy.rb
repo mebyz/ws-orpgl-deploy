@@ -63,7 +63,7 @@ set :composer_install_flags, ''
 
  task :release_launch do
     on roles :all do  
-      sudo "echo \"Launch\" && sudo chmod +x /vagrant/launch && sudo nohup /vagrant/launch >/dev/null 2>&1"
+      sudo "echo \"Launch\" && cd /var/www/dev/source && nohup php app/console ws:launch &"
     end
   end
 
