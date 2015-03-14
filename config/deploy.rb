@@ -76,7 +76,7 @@ end
 
 task :composer_update do
     on roles :all do
-        sudo "echo \"..\" && cdir=$(ls -td /var/www/ws-orpgl/releases/* | head -n1) && cd $cdir && sudo chmod 777 vendor/ && echo \"composer UPDATE\" && sudo /usr/bin/env composer config -g github-oauth.github.com c4e782683c73c5ba2801153a2bef76ed0fb9cf06 && sudo /usr/bin/env composer update  && sudo chmod 777 vendor/  "
+        sudo "echo \"..\" && cdir=$(ls -td /var/www/ws-orpgl/releases/* | head -n1) && echo \"composer UPDATE\" && cd $cdir && /usr/bin/env composer config -g github-oauth.github.com c4e782683c73c5ba2801153a2bef76ed0fb9cf06 && /usr/bin/env composer update  && sudo chmod 777 vendor/  "
     end
 end
 
