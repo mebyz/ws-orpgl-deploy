@@ -1,5 +1,7 @@
-.bundle/
-.vagrant/
+.DS_Store
 Gemfile.lock
 bin/
 vagrant-ssh-config
+dev/
+.bundle/
+.vagrant/

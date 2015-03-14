@@ -1,1 +1,0 @@
-cd /var/www/release && nohup php app/console ws:launch &
