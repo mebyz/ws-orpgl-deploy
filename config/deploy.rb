@@ -1,4 +1,4 @@
-lock '3.2.1'
+#lock '3.2.1'
 
 set :application, 'ws-orpgl'
 set :repo_url, 'git@github.com:mebyz/ws-orpgl.git'

@@ -1,0 +1,5 @@
+.bundle/
+.vagrant/
+Gemfile.lock
+bin/
+vagrant-ssh-config
